@@ -6,13 +6,10 @@ var command = input[2];
 var value1= input[3];
 var value2= input[3];
 var request = require("request");
-
-var Spotify = require('node-spotify-api')
-
+var fs = require("fs");
 
 
-
-
+var Spotify = require('node-spotify-api');
 
 var stringers = function (){
   if (input.length>3)
@@ -76,7 +73,27 @@ console.log(tpls.album.name);
 }
 // mySpotify();
 
+function randomFile(){
+  fs.readFile("random.txt", "utf8", function(error, data) {
 
+  if (error) {
+    return console.log(error);
+  }
+
+  // console.log(data);
+  var dataArr = data.split(",");
+  // dataArrVal = dataArr[1].split(" ");
+  command = dataArr[0]
+ 
+
+  value2 = dataArr[1].replace(/[^a-zA-Z ]/g, "");
+
+
+  // console.log(command)
+  // console.log(value2);
+  switchCommand();
+});
+};
 
 
 
@@ -108,6 +125,8 @@ request("http://www.omdbapi.com/?t=" + value2 + "&y=&plot=short&apikey=40e9cece"
 });
 };
 
+
+
 function switchCommand(){
     switch(command){
         case "my-tweets":
@@ -120,7 +139,7 @@ function switchCommand(){
           myMovie();
           break;
         case "do-what-it-says":
-          action();
+          randomFile();
           break;
         default:
             console.log(`Please type 'my-tweets', 'spotify-this-song', 'movie-this' or 'do-what-it-says'`);
