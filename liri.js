@@ -103,10 +103,6 @@ request("http://www.omdbapi.com/?t=" + value2 + "&y=&plot=short&apikey=40e9cece"
  
   if (!error && response.statusCode === 200) {
   var movieStats = JSON.parse(body); 
-// foreach(movieStats.Ratings)
-// {if (movieStats.Ratings[1].Source.includes("Rotten Tomatoes")){
-
-
 // }
 
 // }
@@ -114,8 +110,8 @@ request("http://www.omdbapi.com/?t=" + value2 + "&y=&plot=short&apikey=40e9cece"
     // console.log(movieStats);
     console.log(movieStats.Title);
     console.log(movieStats.Year);
-    console.log(movieStats.Ratings.imdbRating);
-    console.log(movieStats.Ratings[1].Source);
+    console.log(movieStats.imdbRating);
+    console.log(movieStats.Ratings[1].Value);
     console.log(movieStats.Country);
     console.log(movieStats.Language);
     console.log(movieStats.Plot);
