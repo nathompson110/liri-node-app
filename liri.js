@@ -1,4 +1,3 @@
-
 var secretKeys = require("./keys.js");
 var Twitter = require('twitter');
 var input = process.argv;
@@ -9,10 +8,19 @@ var request = require("request");
 var fs = require("fs");
 
 
+
+
 var Spotify = require('node-spotify-api');
 
 var stringers = function (){
-  if (input.length>3)
+  if (input.length===3){
+    if (command==="spotify-this-song"){
+      value2 = "The Sign Ace of base";
+    }else if (command==="movie-this"){
+      value2 = "Mr. Nobody"
+    }
+
+    } else if (input.length>3)
   {
   for(var i=4; i< input.length; i++)
   
@@ -116,7 +124,7 @@ request("http://www.omdbapi.com/?t=" + value2 + "&y=&plot=short&apikey=40e9cece"
     console.log(movieStats.Language);
     console.log(movieStats.Plot);
     console.log(movieStats.Actors);
-   }
+   } else {console.log(error)}
   
 });
 };
